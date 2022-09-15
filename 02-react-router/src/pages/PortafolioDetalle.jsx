@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 
 const PortafolioDetalle = () => {
   const proyectos = [
@@ -8,12 +8,20 @@ const PortafolioDetalle = () => {
   ]
 
   const { pid } = useParams() // Tiene el número que yo le mando en la ruta
-
+  const navigate = useNavigate() // Cambio de ruta programaticamente
   return (
     <>
       <h3>ID: {proyectos[pid - 1].id}</h3>
       <h3>Nombre: {proyectos[pid - 1].nombre}</h3>
       <p>Descripción: {proyectos[pid - 1].desc} </p>
+
+      <button onClick={() => {
+        navigate('/portafolio')
+        // Si quiero ir a la página anterior del historial: navigate(-1)
+        // Si quiero ir a la página siguiente del historial: navigate(1)
+      }}
+      >Nos vamos al Portafolio
+      </button>
     </>
   )
 }
