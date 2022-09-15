@@ -68,3 +68,12 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+ul {
+  list-style-type: none;
+  display: inline-flex;
+}
+
+li {
+  padding: 0 1em;
+}
