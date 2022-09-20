@@ -1,4 +1,5 @@
 import { SongList } from '@/components/SongList'
+import { SongDetails } from '@/components/SongDetails'
 import './home.css'
 
 const Home = () => {
@@ -10,6 +11,7 @@ const Home = () => {
       </div>
       <div className='derecho'>
         <h2>Lado Derecho</h2>
+        <SongDetails />
       </div>
     </div>
   )
