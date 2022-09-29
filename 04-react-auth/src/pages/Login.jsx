@@ -1,10 +1,25 @@
 import useForm from '@/hooks/useForm'
+import { useNavigate } from 'react-router-dom'
+import { loginUser } from '@/services/userServices'
 import logo from '@/assets/react.svg'
 import '@/assets/css/form.css'
 
 const Login = () => {
-  const sendData = (data) => {
-    console.log(data)
+  const navigate = useNavigate()
+  const sendData = async (data) => {
+    try {
+      const result = await loginUser(data)
+      if (result.status === 200) {
+        // Guardamos el token en el localStorage del navegador
+        // Este dato permance aún si el navegador se cierrra y se vuelve abrir.
+        window.localStorage.setItem('token', result.data.token)
+
+        // console.log(result.data.token)
+        navigate('/')
+      }
+    } catch (error) {
+      console.log('Ocurrio un error en Login: ' + error.message)
+    }
   }
 
   const { input, handleInputChange, handleSubmit } = useForm(sendData, {
