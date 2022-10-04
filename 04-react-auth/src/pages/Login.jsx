@@ -15,7 +15,7 @@ const Login = () => {
       if (result.status === 200) {
         loginUser(result.data.token)
         // console.log(result.data.token)
-        navigate('/')
+        navigate('/dashboard')
       }
     } catch (error) {
       console.log('Ocurrio un error en Login: ' + error.message)
@@ -37,13 +37,13 @@ const Login = () => {
           <input
             type='email'
             className='form-control'
-            id='floatingInput'
+            id='floatingEmail'
             name='email'
             value={input.email}
             onChange={handleInputChange}
             placeholder='name@example.com'
           />
-          <label htmlFor='floatingInput'>Email address</label>
+          <label htmlFor='floatingEmail'>Email address</label>
         </div>
         <div className='form-floating'>
           <input
